@@ -1,34 +1,309 @@
-.body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+/* ===========================
+   Bank of Albion - Styling
+   Inspired by Albion Online
+   =========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.header {
-    background-color: #007BFF;
-    color: white;
-    padding: 15px;
+:root {
+    --primary-dark: #1a1a1a;
+    --secondary-dark: #2d2d2d;
+    --accent-gold: #d4af37;
+    --accent-orange: #ff6b35;
+    --accent-red: #8b2e1f;
+    --text-light: #e0e0e0;
+    --text-muted: #999;
+    --border-gold: #d4af37;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--primary-dark);
+    background-image: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+}
+
+/* ===========================
+   HEADER & NAVIGATION
+   =========================== */
+
+header {
+    background-color: var(--accent-red);
+    background-image: linear-gradient(to bottom, #a03020, #6b1f15);
+    padding: 1rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid var(--accent-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
     text-align: center;
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
+                 0 0 10px rgba(212, 175, 55, 0.3);
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
-.nav {
+header h2 {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--accent-orange);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+nav {
+    background-color: var(--accent-red);
+    padding: 0;
+    margin-top: 1rem;
+}
+
+nav ul {
     display: flex;
-    justify-content: space-around;
-    background-color: #0056b3;
-    padding: 10px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0;
 }
 
-.nav a {
-    color: white;
+nav li {
+    flex: 1;
+    max-width: 180px;
+}
+
+nav a {
+    display: block;
+    padding: 1rem;
+    color: var(--text-light);
     text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
-.footer {
-    background-color: #333;
-    color: white;
+nav li:last-child a {
+    border-right: none;
+}
+
+nav a:hover {
+    background-color: var(--accent-orange);
+    color: var(--primary-dark);
+}
+
+/* ===========================
+   MAIN CONTENT
+   =========================== */
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    background: linear-gradient(135deg, var(--secondary-dark) 0%, #252525 100%);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--accent-gold);
+    border-radius: 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 
+                inset 0 1px 0 rgba(212, 175, 55, 0.2);
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+section h2 {
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+section h3 {
+    color: var(--accent-orange);
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+section p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* ===========================
+   SUBSECTIONS
+   =========================== */
+
+.subsections {
+    margin-left: 1.5rem;
+    border-left: 3px solid var(--accent-gold);
+    padding-left: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.subsection {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid var(--accent-orange);
+}
+
+.subsection h4 {
+    color: var(--accent-orange);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subsection ul {
+    list-style: none;
+    margin-left: 1rem;
+}
+
+.subsection li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-muted);
+}
+
+.subsection li:before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+footer {
+    background-color: var(--accent-red);
+    background-image: linear-gradient(to bottom, #6b1f15, #4a1810);
+    color: var(--text-light);
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 3px solid var(--accent-gold);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+}
+
+footer p {
+    margin: 0;
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+@media (max-width: 1024px) {
+    main {
+        padding: 1.5rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    section h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header h2 {
+        font-size: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        max-width: 100%;
+    }
+
+    nav a {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    nav li:last-child a {
+        border-bottom: none;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    section h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    section h2 {
+        font-size: 1.2rem;
+    }
+
+    section {
+        margin-bottom: 1rem;
+    }
 }
