@@ -1,47 +1,17 @@
 /* ===========================
    Bank of Albion - Styling
-   Inspired by Albion Online
+   Tokens come from brand-kit.css
    =========================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-dark: #1a1a1a;
-    --secondary-dark: #2d2d2d;
-    --accent-gold: #d4af37;
-    --accent-orange: #ff6b35;
-    --accent-red: #8b2e1f;
-    --text-light: #e0e0e0;
-    --text-muted: #999;
-    --border-gold: #d4af37;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Arial', 'Helvetica', sans-serif;
-    line-height: 1.6;
-    color: var(--text-light);
-    background-color: var(--primary-dark);
-    background-image: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-}
 
 /* ===========================
    HEADER & NAVIGATION
    =========================== */
 
 header {
-    background-color: var(--accent-red);
-    background-image: linear-gradient(to bottom, #a03020, #6b1f15);
-    padding: 1rem 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    border-bottom: 3px solid var(--accent-gold);
+    background-color: var(--color-header-bg);
+    padding: var(--space-4) 0;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    border-bottom: 3px solid var(--color-accent-primary);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -49,27 +19,19 @@ header {
 
 header h1 {
     text-align: center;
-    font-size: 2.5rem;
-    color: var(--accent-gold);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
-                 0 0 10px rgba(212, 175, 55, 0.3);
-    letter-spacing: 2px;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-header h2 {
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--accent-orange);
-    font-weight: normal;
-    letter-spacing: 1px;
+    font-family: var(--font-headline);
+    font-size: var(--text-3xl);
+    color: var(--color-text-light);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: var(--tracking-wider);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    padding: 0 var(--space-8);
 }
 
 nav {
-    background-color: var(--accent-red);
-    padding: 0;
-    margin-top: 1rem;
+    background-color: var(--color-header-bg);
+    margin-top: var(--space-4);
 }
 
 nav ul {
@@ -87,25 +49,27 @@ nav li {
 
 nav a {
     display: block;
-    padding: 1rem;
-    color: var(--text-light);
+    padding: var(--space-4);
+    font-family: var(--font-headline);
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-light);
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: bold;
-    font-size: 0.9rem;
+    letter-spacing: var(--tracking-wide);
     border-right: 1px solid rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
     text-align: center;
-    letter-spacing: 1px;
 }
 
 nav li:last-child a {
     border-right: none;
 }
 
-nav a:hover {
-    background-color: var(--accent-orange);
-    color: var(--primary-dark);
+nav a:hover,
+nav a.active {
+    background-color: var(--color-accent-primary);
+    color: var(--color-text-light);
 }
 
 /* ===========================
@@ -113,19 +77,18 @@ nav a:hover {
    =========================== */
 
 main {
-    max-width: 1200px;
+    max-width: var(--max-width-content);
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--space-8);
 }
 
 section {
-    background: linear-gradient(135deg, var(--secondary-dark) 0%, #252525 100%);
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border: 1px solid var(--accent-gold);
-    border-radius: 0;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 
-                inset 0 1px 0 rgba(212, 175, 55, 0.2);
+    background-color: var(--color-bg-primary);
+    margin-bottom: var(--space-8);
+    padding: var(--space-8);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-none);
+    box-shadow: var(--shadow-card);
     position: relative;
 }
 
@@ -136,33 +99,35 @@ section::before {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    background-color: var(--color-accent-primary);
 }
 
 section h2 {
-    color: var(--accent-gold);
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    border-bottom: 2px solid var(--accent-gold);
-    padding-bottom: 0.8rem;
+    font-family: var(--font-headline);
+    font-size: var(--text-2xl);
+    color: var(--color-accent-secondary);
+    margin-bottom: var(--space-6);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: var(--space-3);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    letter-spacing: var(--tracking-wider);
 }
 
 section h3 {
-    color: var(--accent-orange);
-    margin-top: 1.5rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.3rem;
+    font-family: var(--font-headline);
+    font-size: var(--text-xl);
+    color: var(--color-accent-primary);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: var(--tracking-wide);
 }
 
 section p {
-    margin-bottom: 1rem;
-    color: var(--text-light);
-    line-height: 1.8;
+    font-family: var(--font-body);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-dark);
+    line-height: var(--leading-loose);
 }
 
 /* ===========================
@@ -170,45 +135,46 @@ section p {
    =========================== */
 
 .subsections {
-    margin-left: 1.5rem;
-    border-left: 3px solid var(--accent-gold);
-    padding-left: 1.5rem;
-    margin-top: 1.5rem;
+    margin-left: var(--space-6);
+    border-left: 3px solid var(--color-border);
+    padding-left: var(--space-6);
+    margin-top: var(--space-6);
 }
 
 .subsection {
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-left: 3px solid var(--accent-orange);
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background-color: rgba(210, 196, 168, 0.2);
+    border-left: 3px solid var(--color-accent-primary);
 }
 
 .subsection h4 {
-    color: var(--accent-orange);
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-family: var(--font-title);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    color: var(--color-accent-secondary);
+    margin-bottom: var(--space-2);
 }
 
 .subsection ul {
     list-style: none;
-    margin-left: 1rem;
+    margin-left: var(--space-4);
 }
 
 .subsection li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-6);
     position: relative;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
 }
 
-.subsection li:before {
+.subsection li::before {
     content: "◆";
     position: absolute;
     left: 0;
-    color: var(--accent-gold);
-    font-size: 0.8rem;
+    color: var(--color-accent-primary);
+    font-size: var(--text-xs);
 }
 
 /* ===========================
@@ -216,21 +182,20 @@ section p {
    =========================== */
 
 footer {
-    background-color: var(--accent-red);
-    background-image: linear-gradient(to bottom, #6b1f15, #4a1810);
-    color: var(--text-light);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
     text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-    border-top: 3px solid var(--accent-gold);
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+    padding: var(--space-8);
+    margin-top: var(--space-12);
+    border-top: 3px solid var(--color-accent-primary);
+    box-shadow: 0 -4px 15px var(--color-shadow);
 }
 
 footer p {
     margin: 0;
-    color: var(--accent-gold);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-wide);
 }
 
 /* ===========================
@@ -239,25 +204,17 @@ footer p {
 
 @media (max-width: 1024px) {
     main {
-        padding: 1.5rem;
+        padding: var(--space-6);
     }
 
     section {
-        padding: 1.5rem;
-    }
-
-    section h2 {
-        font-size: 1.7rem;
+        padding: var(--space-6);
     }
 }
 
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
-    }
-
-    header h2 {
-        font-size: 1rem;
+        font-size: var(--text-2xl);
     }
 
     nav ul {
@@ -278,32 +235,20 @@ footer p {
     }
 
     main {
-        padding: 1rem;
+        padding: var(--space-4);
     }
 
     section {
-        padding: 1rem;
-    }
-
-    section h2 {
-        font-size: 1.4rem;
-    }
-
-    section h3 {
-        font-size: 1.1rem;
+        padding: var(--space-4);
     }
 }
 
 @media (max-width: 480px) {
     header h1 {
-        font-size: 1.5rem;
-    }
-
-    section h2 {
-        font-size: 1.2rem;
+        font-size: var(--text-xl);
     }
 
     section {
-        margin-bottom: 1rem;
+        margin-bottom: var(--space-4);
     }
 }
