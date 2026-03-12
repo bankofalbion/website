@@ -1,0 +1,667 @@
+/* =============================================================
+   BANK OF ALBION — BRAND KIT & DESIGN SYSTEM
+   Inspired by Albion Online's "fantasy-industrial" aesthetic.
+   
+   HOW TO USE:
+   Link this file BEFORE any other stylesheets so that the
+   CSS custom properties and base resets are available
+   everywhere on the site.  Also add a Google Fonts <link>
+   in the <head> BEFORE this stylesheet for the best
+   font-loading performance:
+   
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300..700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="brand-kit.css">
+   
+   All design tokens are exposed as CSS custom properties
+   (CSS variables) on :root.  Reference them in any stylesheet:
+   
+     color: var(--color-accent-primary);
+     font-family: var(--font-headline);
+   ============================================================= */
+
+
+/* =============================================================
+   1. DESIGN TOKENS — CSS CUSTOM PROPERTIES
+   ============================================================= */
+
+:root {
+
+  /* ----------------------------------------------------------
+     1a. COLOUR PALETTE
+     ---------------------------------------------------------- */
+
+  /* Backgrounds */
+  --color-bg-primary:   #F1E9D9;   /* parchment — main content area   */
+  --color-bg-dark:      #1A2228;   /* deep dark — footer / hero panels */
+
+  /* Navigation / Header */
+  --color-header-bg:    #3C130D;   /* deep mahogany red                */
+
+  /* Accents */
+  --color-accent-primary:   #E55C2E; /* bright orange — CTAs, active tabs */
+  --color-accent-secondary: #6F1D1B; /* muted red — tags, secondary heads */
+  --color-accent-hover:     #F07540; /* lightened orange — hover state    */
+
+  /* Text */
+  --color-text-dark:    #222222;   /* body text on light backgrounds    */
+  --color-text-light:   #FFFFFF;   /* text on dark / coloured surfaces  */
+  --color-text-muted:   #6B5E4E;   /* subdued copy on parchment         */
+
+  /* Borders & Dividers */
+  --color-border:       #D2C4A8;   /* subtle separator on parchment     */
+  --color-border-strong:#B8A88A;   /* slightly darker variant           */
+
+  /* Utility shades */
+  --color-overlay-dark: rgba(26, 34, 40, 0.65); /* image overlay / vignette */
+  --color-shadow:       rgba(0, 0, 0, 0.35);
+
+
+  /* ----------------------------------------------------------
+     1b. TYPOGRAPHY
+     ---------------------------------------------------------- */
+
+  /* Font families */
+  --font-headline:   'Bebas Neue', 'Roboto Condensed', Arial Narrow, sans-serif;
+  --font-title:      'Montserrat', 'Open Sans', sans-serif;
+  --font-body:       'Open Sans', 'Arial', 'Verdana', sans-serif;
+
+  /* Font sizes — modular scale (base 16 px) */
+  --text-xs:    0.75rem;   /*  12 px — metadata, captions   */
+  --text-sm:    0.875rem;  /*  14 px — small utility text   */
+  --text-base:  1rem;      /*  16 px — body default         */
+  --text-lg:    1.125rem;  /*  18 px — lead paragraph       */
+  --text-xl:    1.5rem;    /*  24 px — section subheadings  */
+  --text-2xl:   2rem;      /*  32 px — section headings     */
+  --text-3xl:   2.5rem;    /*  40 px — page / hero title    */
+  --text-4xl:   3.5rem;    /*  56 px — display headline     */
+
+  /* Font weights */
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+
+  /* Line heights */
+  --leading-tight:  1.2;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* Letter spacing */
+  --tracking-wide:    0.05em;   /* nav items, labels     */
+  --tracking-wider:   0.1em;    /* display headings      */
+  --tracking-widest:  0.15em;   /* all-caps small labels */
+
+
+  /* ----------------------------------------------------------
+     1c. GEOMETRY & SHAPE
+     All interactive elements use sharp, rectangular corners
+     to match the hard "medieval-industrial" aesthetic.
+     ---------------------------------------------------------- */
+
+  --radius-none:  0px;    /* default — all buttons, cards, images */
+  --radius-sm:    2px;    /* subtle softening only if absolutely needed */
+
+
+  /* ----------------------------------------------------------
+     1d. SPACING SCALE
+     ---------------------------------------------------------- */
+
+  --space-1:  0.25rem;  /*  4 px */
+  --space-2:  0.5rem;   /*  8 px */
+  --space-3:  0.75rem;  /* 12 px */
+  --space-4:  1rem;     /* 16 px */
+  --space-5:  1.25rem;  /* 20 px */
+  --space-6:  1.5rem;   /* 24 px */
+  --space-8:  2rem;     /* 32 px */
+  --space-10: 2.5rem;   /* 40 px */
+  --space-12: 3rem;     /* 48 px */
+  --space-16: 4rem;     /* 64 px */
+
+
+  /* ----------------------------------------------------------
+     1e. SHADOWS
+     ---------------------------------------------------------- */
+
+  --shadow-card:  0 4px 12px var(--color-shadow);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+
+  /* ----------------------------------------------------------
+     1f. LAYOUT
+     ---------------------------------------------------------- */
+
+  --max-width-content: 1200px;
+  --grid-columns: 12;
+  --grid-gap:     1.5rem;   /* gutter between columns */
+
+  /* Convenience ratios for common splits */
+  --col-main:    8;   /* 8 / 12 = 2/3 main content */
+  --col-sidebar: 4;   /* 4 / 12 = 1/3 sidebar      */
+
+
+  /* ----------------------------------------------------------
+     1g. TRANSITIONS
+     ---------------------------------------------------------- */
+
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* ----------------------------------------------------------
+     1h. BUTTON TOKENS
+     ---------------------------------------------------------- */
+
+  --color-btn-dark-bg:    #444444; /* dark secondary button background  */
+  --color-btn-dark-hover: #555555; /* dark secondary button hover state */
+}
+
+
+/* =============================================================
+   3. BASE RESET & GLOBAL DEFAULTS
+   ============================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-primary);
+
+  /* Subtle parchment paper texture via CSS noise pattern */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+
+/* =============================================================
+   4. TYPOGRAPHY STYLES
+   ============================================================= */
+
+/* --- Headline font — all caps, heavy, condensed --- */
+h1, h2, h3,
+.headline {
+  font-family: var(--font-headline);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-tight);
+  color: var(--color-text-dark);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+
+/* --- Title font — geometric sans-serif, title case --- */
+h4, h5, h6,
+.title {
+  font-family: var(--font-title);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text-dark);
+}
+
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+/* --- Body & utility text --- */
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-4);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.text-meta {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Light text variants (use on dark backgrounds) */
+.text-light          { color: var(--color-text-light); }
+.headline.text-light { color: var(--color-text-light); }
+
+
+/* =============================================================
+   5. LAYOUT UTILITIES
+   ============================================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+/* 12-column grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gap);
+}
+
+/* Common splits */
+.col-main    { grid-column: span 8; }  /* 2/3  */
+.col-sidebar { grid-column: span 4; }  /* 1/3  */
+.col-half    { grid-column: span 6; }  /* 1/2  */
+.col-third   { grid-column: span 4; }  /* 1/3  */
+.col-quarter { grid-column: span 3; }  /* 1/4  */
+.col-full    { grid-column: span 12; } /* full */
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+
+/* =============================================================
+   6. HEADER & NAVIGATION
+   ============================================================= */
+
+.site-header {
+  background-color: var(--color-header-bg);
+  color: var(--color-text-light);
+  padding: var(--space-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  border-bottom: 3px solid var(--color-accent-primary);
+}
+
+.site-header .site-title {
+  font-family: var(--font-headline);
+  font-size: var(--text-3xl);
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+/* Navigation bar */
+.site-nav {
+  background-color: var(--color-header-bg);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.site-nav a {
+  display: block;
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-headline);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  background-color: var(--color-accent-primary);
+  color: var(--color-text-light);
+}
+
+
+/* =============================================================
+   7. BUTTONS
+   ============================================================= */
+
+/* Base button reset */
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-8);
+  font-family: var(--font-headline);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border: 2px solid transparent;
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color     var(--transition-fast),
+    color            var(--transition-fast);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Primary CTA — orange fill */
+.btn-primary {
+  background-color: var(--color-accent-primary);
+  border-color:     var(--color-accent-primary);
+  color:            var(--color-text-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color:     var(--color-accent-hover);
+  color:            var(--color-text-light);
+}
+
+/* Secondary — ghost / outlined */
+.btn-secondary {
+  background-color: transparent;
+  border-color:     var(--color-border-strong);
+  color:            var(--color-text-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-border);
+  color:            var(--color-text-dark);
+}
+
+/* Dark ghost (for use on dark backgrounds) */
+.btn-dark {
+  background-color: var(--color-btn-dark-bg);
+  border-color:     var(--color-btn-dark-bg);
+  color:            var(--color-text-light);
+}
+
+.btn-dark:hover {
+  background-color: var(--color-btn-dark-hover);
+  border-color:     var(--color-btn-dark-hover);
+  color:            var(--color-text-light);
+}
+
+
+/* =============================================================
+   8. CARDS
+   ============================================================= */
+
+.card {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-none);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.card-body {
+  padding: var(--space-6);
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-3);
+}
+
+.card-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-4);
+}
+
+/* Dark card variant (e.g., in footer panels) */
+.card-dark {
+  background-color: var(--color-bg-dark);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-light);
+}
+
+.card-dark .card-title {
+  color: var(--color-text-light);
+}
+
+/* Tag / badge on cards */
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  background-color: var(--color-accent-secondary);
+  color: var(--color-text-light);
+  border-radius: var(--radius-none);
+}
+
+
+/* =============================================================
+   9. FOOTER
+   ============================================================= */
+
+.site-footer {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  padding: var(--space-12) 0 var(--space-8);
+  margin-top: var(--space-12);
+  border-top: 3px solid var(--color-accent-primary);
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  transition: color var(--transition-fast);
+}
+
+.site-footer a:hover {
+  color: var(--color-accent-primary);
+}
+
+.site-footer p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--text-sm);
+}
+
+
+/* =============================================================
+   10. IMAGERY & OVERLAYS
+   ============================================================= */
+
+/* Hero / banner image container with vignette overlay */
+.hero-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Inner-glow / vignette so text overlays remain legible */
+.hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 40%, var(--color-overlay-dark) 100%),
+    linear-gradient(to bottom, transparent 50%, var(--color-overlay-dark) 100%);
+  pointer-events: none;
+}
+
+.hero-image .hero-content {
+  position: absolute;
+  bottom: var(--space-8);
+  left: var(--space-8);
+  z-index: 1;
+  color: var(--color-text-light);
+}
+
+
+/* =============================================================
+   11. SECTION UTILITIES
+   ============================================================= */
+
+/* Light section (parchment background) */
+.section-light {
+  background-color: var(--color-bg-primary);
+  padding: var(--space-12) 0;
+}
+
+/* Dark section */
+.section-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  padding: var(--space-12) 0;
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6 {
+  color: var(--color-text-light);
+}
+
+.section-dark p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Section heading with accent underline */
+.section-heading {
+  font-family: var(--font-headline);
+  font-size: var(--text-2xl);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-accent-primary);
+  margin-bottom: var(--space-6);
+}
+
+
+/* =============================================================
+   12. RESPONSIVE BREAKPOINTS
+   ============================================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --text-4xl: 3rem;
+    --text-3xl: 2.25rem;
+  }
+
+  .container {
+    padding-inline: var(--space-6);
+  }
+
+  .col-main,
+  .col-sidebar {
+    grid-column: span 12;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --text-4xl: 2.25rem;
+    --text-3xl: 1.875rem;
+    --text-2xl: 1.5rem;
+  }
+
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .col-main,
+  .col-sidebar,
+  .col-half,
+  .col-third,
+  .col-quarter,
+  .col-full {
+    grid-column: span 1;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+  }
+
+  .site-nav a {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  :root {
+    --text-4xl: 2rem;
+    --text-3xl: 1.625rem;
+  }
+}
