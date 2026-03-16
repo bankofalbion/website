@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title>Bank of Albion Placeholder Logo</title>
+  <desc>Shield logo placeholder with BA initials.</desc>
+  <defs>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4ec2ff" />
+      <stop offset="100%" stop-color="#0f74d7" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="#0a1828" />
+  <path d="M64 16 100 30v30c0 27.5-19.6 43.4-36 52-16.4-8.6-36-24.5-36-52V30z" fill="url(#shield)" />
+  <path d="M45 79V47h19.3c9.5 0 14.7 4.9 14.7 12.2 0 4.8-2.6 8.4-6.8 10.3l8.5 9.5H68.1l-6.2-7.3h-5.1V79Zm11.8-15.5h6.6c2.3 0 3.8-1.6 3.8-3.8s-1.5-3.8-3.8-3.8h-6.6Z" fill="#ecf5ff" />
+</svg>
